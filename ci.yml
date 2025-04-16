@@ -1,0 +1,25 @@
+name: CI for Pull Requests
+
+on:
+  pull_request:
+    branches:
+      - main # Theo dõi pull request vào nhánh chính
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (hoặc môi trường của bạn)
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Run tests
+        run: npm test # Hoặc bất kỳ lệnh nào bạn cần để kiểm tra mã nguồn
+
+      - name: Build Project
+        run: npm run build # Lệnh để build project của bạn
